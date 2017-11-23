@@ -1,0 +1,18 @@
+<form [formGroup]="formulario" (ngSubmit)="enviar()">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre">
+    <div *ngIf="formulario.controls['nombre'].touched && !formulario.controls['nombre'].valid && formulario.controls['nombre'].errors['required']">
+        Debes rellenar el nombre
+    </div>
+    <br/>
+    <label for="correoElectronico">Correo</label>
+    <input type="text" id="correoElectronico" formControlName="correo">
+    <div *ngIf="formulario.controls['correo'].touched && !formulario.controls['correo'].valid && formulario.controls['correo'].errors['pattern']">
+        No cumple el formato
+    </div>
+    <div *ngIf="formulario.controls['correo'].touched && !formulario.controls['correo'].valid && formulario.controls['correo'].errors['required']">
+        Debes rellenar el correo
+    </div>
+    <br/>
+    <button>Enviar</button>
+</form>

@@ -1,0 +1,30 @@
+<form (ngSubmit)="enviarForm(formulario)" #formulario="ngForm">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" [ngModel]="prueba.nombre" name="name" #name="ngModel" required minlength="3">
+
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+            Name is required.
+        </div>
+        <div *ngIf="name.errors.minlength">
+            Name must be at least 3 characters long.
+        </div>
+    </div>
+
+    <br/>
+    <label for="correoElectronico">Correo</label>
+    <input type="text" id="correoElectronico" [ngModel]="prueba.correo" name="correo" #correo="ngModel" required minlength="3" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$">
+    <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="alert alert-danger">
+        <div *ngIf="correo.errors.required">
+            Correo is required.
+        </div>
+        <div *ngIf="correo.errors.minlength">
+            Name must be at least 3 characters long.
+        </div>
+        <div *ngIf="correo.errors.pattern">
+            Pattern error
+        </div>
+    </div>
+    <br/>
+    <button [disabled]="!formulario.valid" type="submit">Enviar</button>
+</form>

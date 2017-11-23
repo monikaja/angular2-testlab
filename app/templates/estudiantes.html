@@ -1,0 +1,16 @@
+<!--<div [ngStyle]="{'backgroundColor': status == 'Pending' ? 'red' : 'green' }">-->
+<div>
+    <h3>{{titulo}}</h3>
+    <!--<img [src]="imgUrl" [class.img-rounded]="redondeadas"/>-->
+    <ul [hidden]="estudiantes.length ===0">
+        <li *ngFor="let estudiante of estudiantes">
+            <span (click)="clickEnEstudiante($event)">{{estudiante}}</span>
+        </li>
+    </ul>
+    <div>
+        <span  [hidden]="estudiantes.length >0">No hay ningún estudiante</span>
+    </div>
+    <input type="text" [value]="titulo" />
+    <!--<input type="text" [(ngModel)]="titulo" [value]="titulo" />-->
+    <button (click)="prueba($event)">Test</button>
+</div>
